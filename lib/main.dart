@@ -2,17 +2,22 @@
 import 'package:flutter/material.dart';
 
 //void main(){
- // runApp(MyApp());
+// runApp(MyApp());
 //}
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     //throw UnimplementedError();
     // ignore: dead_code
-    return MaterialApp(home: Text('Hello world!'),);
-      }
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('This is my First app'),),
+        body: Text('Body of my first app'),
+      ),
+    );
+  }
 }
