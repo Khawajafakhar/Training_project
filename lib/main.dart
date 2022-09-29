@@ -7,17 +7,41 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+class MyAppState extends State<MyApp>{
+
+
+  var questionIndex=0;
 
   void answerOne(){
+    setState(() {
+      questionIndex=questionIndex+1;
+    });
+    
     print('Answer 1 is presssed');
   }
 
   void answertwo(){
+    setState(() {
+      questionIndex=questionIndex+1;
+    });
     print('Answer 2 is presssed');
   }
   @override
   Widget build(BuildContext context) {
+    var questions= [
+      'Select any answer',
+      'Answer 1 is selected',
+      'Answer 2 is selected',
+      'Answer 3 is selected',
+      'Answer 4 is selected'
+    ];
     // TODO: implement build
     //throw UnimplementedError();
     // ignore: dead_code
@@ -28,7 +52,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('This is the question'),
+            Text(questions[questionIndex]),
             ElevatedButton(
               onPressed: answerOne,
               child:
