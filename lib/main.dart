@@ -15,31 +15,29 @@ class MyApp extends StatefulWidget {
     return MyAppState();
   }
 }
-class MyAppState extends State<MyApp>{
 
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+  var state = 0;
 
-  var questionIndex=0;
-  var state=0;
-
-  void answerOne(){
+  void answerOne() {
     setState(() {
-      state=1;
-      
+      state = 1;
     });
-    
+
     print('Answer 1 is presssed');
-    
   }
 
-  void answertwo(){
+  void answertwo() {
     setState(() {
-      state=2;
+      state = 2;
     });
     print('Answer 2 is presssed');
   }
+
   @override
   Widget build(BuildContext context) {
-    var answers= [
+    var answers = [
       'Select any answer',
       'Answer 1 is selected',
       'Answer 2 is selected',
@@ -64,26 +62,26 @@ class MyAppState extends State<MyApp>{
             ),
             ElevatedButton(
               onPressed: answertwo,
-              child:
-                  Text('Answer 2', style: TextStyle(color: Color.fromARGB(255, 64, 255, 223))),
+              child: Text('Answer 2',
+                  style: TextStyle(color: Color.fromARGB(255, 64, 255, 223))),
             ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  state=3;
+                  state = 3;
                 });
               },
-              child:
-                  Text('Answer 3', style: TextStyle(color: Color.fromARGB(255, 255, 64, 64))),
+              child: Text('Answer 3',
+                  style: TextStyle(color: Color.fromARGB(255, 255, 64, 64))),
             ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  state=4;
+                  state = 4;
                 });
               },
-              child:
-                  Text('Answer 4', style: TextStyle(color: Color.fromARGB(255, 6, 8, 0))),
+              child: Text('Answer 4',
+                  style: TextStyle(color: Color.fromARGB(255, 6, 8, 0))),
             ),
           ],
         ),
