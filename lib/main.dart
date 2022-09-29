@@ -18,18 +18,21 @@ class MyAppState extends State<MyApp>{
 
 
   var questionIndex=0;
+  var state=0;
 
   void answerOne(){
     setState(() {
-      questionIndex=questionIndex+1;
+      state=1;
+      
     });
     
     print('Answer 1 is presssed');
+    
   }
 
   void answertwo(){
     setState(() {
-      questionIndex=questionIndex+1;
+      state=2;
     });
     print('Answer 2 is presssed');
   }
@@ -52,7 +55,7 @@ class MyAppState extends State<MyApp>{
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(questions[state]),
             ElevatedButton(
               onPressed: answerOne,
               child:
@@ -64,13 +67,19 @@ class MyAppState extends State<MyApp>{
                   Text('Answer 2', style: TextStyle(color: Color.fromARGB(255, 64, 255, 223))),
             ),
             ElevatedButton(
-              onPressed: () => print('Answer 3 is pressed'),
+              onPressed: () {
+                setState(() {
+                  state=3;
+                });
+              },
               child:
                   Text('Answer 3', style: TextStyle(color: Color.fromARGB(255, 255, 64, 64))),
             ),
             ElevatedButton(
               onPressed: () {
-                print('Answer 4 is pressed');
+                setState(() {
+                  state=4;
+                });
               },
               child:
                   Text('Answer 4', style: TextStyle(color: Color.fromARGB(255, 6, 8, 0))),
