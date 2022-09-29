@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:flutter/material.dart';
+import 'package:my_first_practise/Answers.dart';
 
 //void main(){
 // runApp(MyApp());
@@ -38,7 +39,7 @@ class MyAppState extends State<MyApp>{
   }
   @override
   Widget build(BuildContext context) {
-    var questions= [
+    var answers= [
       'Select any answer',
       'Answer 1 is selected',
       'Answer 2 is selected',
@@ -55,7 +56,7 @@ class MyAppState extends State<MyApp>{
         ),
         body: Column(
           children: [
-            Text(questions[state]),
+            Answers(answers[state]),
             ElevatedButton(
               onPressed: answerOne,
               child:
