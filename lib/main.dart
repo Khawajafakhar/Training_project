@@ -1,7 +1,9 @@
 // ignore: unused_import
 import 'package:flutter/material.dart';
-import 'package:my_first_practise/Answers.dart';
-import 'package:my_first_practise/Questions.dart';
+//import 'package:my_first_practise/Answers.dart';
+//import 'package:my_first_practise/Questions.dart';
+import 'package:my_first_practise/Quiz.dart';
+import 'package:my_first_practise/Results.dart';
 
 //void main(){
 // runApp(MyApp());
@@ -45,7 +47,7 @@ class MyAppState extends State<MyApp> {
     });
     if (state < questions.length) {
       print('We have more question yet');
-    }else{
+    } else {
       print('No more questions');
     }
   }
@@ -67,15 +69,13 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('This is my First app'),
         ),
-        body: state<questions.length ? Column(
-          children: [
-            Questions(questions[state]['questiontext']),
-            ...(questions[state]['answerlist'] as List<String>)
-                .map((answerlist) {
-              return Answers(answerOne, answerlist);
-            })
-          ],
-        ) : Center(child: Text('Completed'),),
+        body: state < questions.length
+            ? Quiz(
+                answerOne: answerOne,
+                state: state,
+                questions: questions,
+              )
+            : Results()
       ),
     );
   }
