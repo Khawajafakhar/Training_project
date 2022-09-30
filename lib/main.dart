@@ -1,6 +1,7 @@
 // ignore: unused_import
 import 'package:flutter/material.dart';
 import 'package:my_first_practise/Answers.dart';
+import 'package:my_first_practise/Questions.dart';
 
 //void main(){
 // runApp(MyApp());
@@ -17,12 +18,11 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  
   var state = 0;
 
   void answerOne() {
     setState(() {
-      state = 1;
+      state = state+1;
     });
 
     print('Answer 1 is presssed');
@@ -37,12 +37,23 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var answers = [
-      'Select any answer',
-      'Answer 1 is selected',
-      'Answer 2 is selected',
-      'Answer 3 is selected',
-      'Answer 4 is selected'
+    var questions = [
+      {
+        'questiontext': 'What is your favourite Animal?',
+        'answerlist': ['Dog', 'cat', 'Elephant'],
+      },
+      {
+        'questiontext': 'What is your favourite Place?',
+        'answerlist': ['Lahore', 'Sialkot', 'Islamabad'],
+      },
+      {
+        'questiontext': 'Who is your favourite person?',
+        'answerlist': ['Ali', 'Saad', 'Fakhar', 'Arslan'],
+      },
+      {
+        'questiontext': 'Who is your favourite host?',
+        'answerlist': ['Ali', 'Saad', 'Fakhar', 'Arslan'],
+      },
     ];
     // TODO: implement build
     //throw UnimplementedError();
@@ -54,35 +65,11 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Answers(answers[state]),
-            ElevatedButton(
-              onPressed: answerOne,
-              child:
-                  Text('Answer 1', style: TextStyle(color: Colors.amberAccent)),
-            ),
-            ElevatedButton(
-              onPressed: answertwo,
-              child: Text('Answer 2',
-                  style: TextStyle(color: Color.fromARGB(255, 64, 255, 223))),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  state = 3;
-                });
-              },
-              child: Text('Answer 3',
-                  style: TextStyle(color: Color.fromARGB(255, 255, 64, 64))),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  state = 4;
-                });
-              },
-              child: Text('Answer 4',
-                  style: TextStyle(color: Color.fromARGB(255, 6, 8, 0))),
-            ),
+            Questions(questions[state]['questiontext']),
+            ...(questions[state]['answerlist'] as List<String>)
+                .map((answerlist) {
+                  return Answers(answerOne,answerlist);
+                })
           ],
         ),
       ),
